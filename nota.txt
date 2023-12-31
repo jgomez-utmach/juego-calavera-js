@@ -1,5 +1,2 @@
 game.js
-  - Creamos objetos para guardar la posición del jugador
-  - Establecemos su posición inicial
-  - Creamos función para dibujar al jugador
-  - En las funciones de movimiento añadimos la logica para calcular la nueva posición del jugador
+  - Validamos que el jugador no se salga del mapa

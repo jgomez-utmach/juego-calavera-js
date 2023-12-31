@@ -9,7 +9,6 @@ const btnDown = document.querySelector('#down');
 let canvasSize;
 let elementsSize;
 
-//Creando objeto para la posicion del jugador
 const playerPosition = {
   x: undefined,
   y: undefined,
@@ -34,17 +33,14 @@ function setCanvasSize() {
 }
 
 function draw() {
-  console.log({ canvasSize, elementsSize });
-
   game.font = elementsSize + 'px Verdana';
   game.textAlign = 'end';
 
   const map = maps[1];
   const mapRows = map.trim().split('\n');
   const mapRowCols = mapRows.map(row => row.trim().split(''));
-  console.log({map, mapRows, mapRowCols});
 
-  //Borrar el canvas
+
   game.clearRect(0,0,canvasSize, canvasSize);
 
   mapRowCols.forEach((row, rowIndex) => {
@@ -53,11 +49,11 @@ function draw() {
       const posX = elementsSize * (colIndex + 1);
       const posY = elementsSize * (rowIndex + 1);
 
-      //Si col es igual al caracter 'O' que representa la puerta
+    
       if (col == 'O') {
-        //y si la posicion x, y del jugador no esta definida
+      
         if (!playerPosition.x && !playerPosition.y) {
-          //asignamos las posición inicial del jugador que será la posicion x, y de la puerta
+        
           playerPosition.x = posX;
           playerPosition.y = posY;
           console.log({playerPosition});
@@ -68,13 +64,11 @@ function draw() {
     });
   });
 
-  //Ejecutamos funcion dibujar al jugador
+
   movePlayer();
 }
 
-//Funcion dibujar al jugador
 function movePlayer() {
-  //Dibujamos al jugador en la posicion x, y asignadas a playerPosition
   game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y);
 }
 
@@ -91,26 +85,42 @@ function moveByKeys(event) {
   else if (event.key == 'ArrowDown') moveDown();
 }
 
-//Añadimos el calculo de la posicion del jugador en cada funcion de movimiento
+//Validar que el jugador no se salga del mapa
 function moveUp() {
-  console.log('Me quiero mover hacia arriba');
-  //Cuando el jugador se mueva hacia arriba, la posicion y del jugador se reducira en el tamaño de los elementos
-  playerPosition.y -= elementsSize;
-  //Volvemos a dibujar el canvas
-  draw();
+  if (Math.ceil(playerPosition.y - elementsSize) < elementsSize) {
+    console.log('OUT', playerPosition.y, elementsSize, Math.ceil(playerPosition.y - elementsSize));
+  } else {
+    playerPosition.y -= elementsSize;
+    draw();
+  }
 }
 function moveLeft() {
   console.log('Me quiero mover hacia izquierda');
-  playerPosition.x -= elementsSize;
-  draw();
+
+  if (Math.ceil(playerPosition.x - elementsSize) < elementsSize) {
+    console.log('OUT', playerPosition.x, elementsSize, Math.ceil(playerPosition.x - elementsSize));
+  } else {
+    playerPosition.x -= elementsSize;
+    draw();
+  }
 }
 function moveRight() {
   console.log('Me quiero mover hacia derecha');
-  playerPosition.x += elementsSize;
-  draw();
+
+  if (Math.floor(playerPosition.x + elementsSize) > canvasSize) {
+    console.log('OUT', playerPosition.x, canvasSize, Math.floor(playerPosition.x + elementsSize));
+  } else {
+    playerPosition.x += elementsSize;
+    draw();
+  }
 }
 function moveDown() {
   console.log('Me quiero mover hacia abajo');
-  playerPosition.y += elementsSize;
-  draw();
+  
+  if (Math.floor(playerPosition.y + elementsSize) > canvasSize) {
+    console.log('OUT', playerPosition.y, canvasSize, Math.floor(playerPosition.y + elementsSize));
+  } else {
+    playerPosition.y += elementsSize;
+    draw();
+  }
 }

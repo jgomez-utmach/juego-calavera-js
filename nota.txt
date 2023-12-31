@@ -1,16 +1,10 @@
 game.js
-  - Seleccionamos el elemento canvas con el id="game"
-  - Obtenemos el contexto del plano en el que trabajaremos, "2D" (x,y)
-  - Creamos un evento para que al terminar de cargar la página se ejecute una función draw
-  - indicamos en la función draw lo que queremos dibujar en canvas
+  - Creamos condicional para que el tamaño del canvas siempre sea cuadrado y proporcional al tamano de la pantalla
+  - Creamos logica matemática para que el tamaño de los emojis permanezca proporcional al tamaño del canvas
+  - Proceso for para repetir el emoji 10 veces en el canvas y distribuirlos en relación a su tamaño
 
 Metodos usados:
-  .getContext('2d');
-  .fillRect(x, y, w, h);
-  .clearRect(x, y, w, h);
-  .fillText('miTexto', x, y);
-
-Atributos usados:
-  .fillStyle = 'blue';
-  .font = 'bold 40px Arial';
-  .textAlign = 'center';
+  window.innerHeight
+  window.innerWidth
+  .setAttribute('width', 100);
+  .setAttribute('height', 100);

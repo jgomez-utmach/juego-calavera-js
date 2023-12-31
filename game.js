@@ -1,28 +1,36 @@
 const canvas = document.getElementById('game');
-//Obtiene el contexto de dibujo 2D del canvas. Este contexto se utilizará para dibujar en el canvas.
 const game = canvas.getContext('2d');
-
-//Cuando la página se carga completamente, se llama a la función 'draw'.
 window.addEventListener('load', draw);
 
 function draw() {
-  /*
-  //Establece el color de relleno del contexto del canvas en rojo.
-  game.fillStyle = 'red';
+  //Variable que contendrá el tamaño del canvas.
+  let canvasSize;
 
-  //Dibuja un cuadrado de 100w x 100h en el contexto del canvas. El cuadrado comienza en la posición (x=0,y=0).
-  game.fillRect(0, 0, 100, 100);
+  //condicional que busca que el canvas sea cuadrado, por lo que se evalúa si la altura es mayor que el ancho.
+  if (window.innerHeight > window.innerWidth) {
+    //Si la altura de la ventana es mayor que el ancho, el tamaño de canvasSize será el ancho de la ventana por 0.8.
+    canvasSize = window.innerWidth * 0.8;
+  } else {
+    //Caso contrario el tamaño de canvasSize será el alto de la ventana por 0.8.
+    canvasSize = window.innerHeight * 0.8;
+  }
 
-  //Borra un cuadrado de 50w x50h en el contexto del canvas. El cuadrado comienza en la posición (x=50,y=50).
-  game.clearRect(50, 50, 50, 50);
-  */
+  //Se establece el tamaño del canvas.
+  canvas.setAttribute('width', canvasSize);
+  canvas.setAttribute('height', canvasSize);
 
-  //Establece el color de relleno del contexto del canvas en azul.
-  game.fillStyle = 'blue';
-  //Establece la fuente y el tamaño de la fuente.
-  game.font = 'bold 40px Arial';
-  //El texto se alinea a partir del centro.
-  game.textAlign = 'center';
-  //Dibuja el texto en el contexto del canvas. El texto comienza en la posición (x=50,y=50).
-  game.fillText('johnny', 50, 50);
+  //Variable que contendrá el tamaño de los elementos del juego.
+  const elementsSize = canvasSize / 10;
+
+  console.log({ canvasSize, elementsSize });
+  
+  //Definimos el tamaño de los elementos del juego.
+  game.font = elementsSize + 'px Verdana';
+  game.textAlign = 'end';
+
+  //Repite el proceso que dibuja el emoji 10 veces.
+  for (let i = 1; i <= 10; i++) {
+    //Dibujamos el emoji en la posición x = elementsSize, y = elementsSize * i.
+    game.fillText(emojis['X'], elementsSize * i, elementsSize);
+  }
 }

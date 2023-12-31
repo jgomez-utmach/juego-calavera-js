@@ -1,5 +1,5 @@
 game.js
-  - Selecionamos por su id a las etiquetas button del html
-  - Añadimos eventos de teclado
-  - Añadimos eventos de click a los botones
-  - Indicamos que función ejecuta cada tecla direccional
+  - Creamos objetos para guardar la posición del jugador
+  - Establecemos su posición inicial
+  - Creamos función para dibujar al jugador
+  - En las funciones de movimiento añadimos la logica para calcular la nueva posición del jugador

@@ -1,0 +1,20 @@
+Creando archivos:
+  - index.html
+  - styles.css
+  - maps.js
+  - game-js
+
+index.js
+  creamos el contenedor del juego "game-container"
+  añadimos: canvas, botones y mensajes
+  importamos archivos .js
+  importamos archivo style.css
+
+styles.css
+  creamos un diseño general
+
+maps.js
+  contine los mapas para cada nivel
+
+game.js
+  solo usamos un console.log para los mapas

@@ -1,15 +1,12 @@
 const canvas = document.getElementById('game');
 const game = canvas.getContext('2d');
 
-//Declaramos como variables globales el tamaño del canvas y el tamaño de los elementos
 let canvasSize;
 let elementsSize;
 
 window.addEventListener('load', setCanvasSize);
-//añadimos un listener para que cuando se redimensione la pantalla se redimensione el canvas
 window.addEventListener('resize', setCanvasSize);
 
-//Separamos la lógica del dibujo (draw) y la lógica que calcula el tamaño del canvas (setCanvasSize)
 function setCanvasSize() {
   if (window.innerHeight > window.innerWidth) {
     canvasSize = window.innerWidth * 0.8;
@@ -31,7 +28,19 @@ function draw() {
   game.font = elementsSize + 'px Verdana';
   game.textAlign = 'end';
 
-  for (let i = 1; i <= 10; i++) {
-    game.fillText(emojis['X'], elementsSize, elementsSize * i);
+  //Seleccionamos un mapa
+  const map = maps[0];
+  //Eliminamos los espacios en blanco (trim) y dividimos por cada salto de línea (split)
+  const mapRows = map.trim().split('\n');
+  //Recorremos cada elemento de mapRows, eliminamos los espacios en blanco (trim) y luego dividimos por cada caracter (split)
+  const mapRowCols = mapRows.map(row => row.trim().split(''));
+  console.log({map, mapRows, mapRowCols});
+
+  //Recorremos cada elemento de mapRowCols y lo dibujamos en el canvas
+  for (let row = 1; row <= 10; row++) {
+    for (let col = 1; col <= 10; col++) {
+      //emojis es un objeto de tipo clave-valor, por lo que podemos acceder a su valor mediante la clave
+      game.fillText(emojis[mapRowCols[row - 1][col - 1]], elementsSize * col, elementsSize * row);
+    }
   }
 }

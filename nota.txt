@@ -1,15 +1,10 @@
 game.js
-  ** Cuando el tamaño de pantalla cambia debemos recargar la página para volver a calcular el tamaño del canvas
-  ** Para solucionar este problema usaremos un addEventListener para volverlo responsivo
-
-  - Declaramos un addEventListener para escuchar el evento 'resize'
-  - Separamos la lógica de la función draw en:
-    -> función para calcular el tamaño del canvas
-    -> función para dibujar en el canvas
-  - Declaramos como variables globales a:
-    -> let canvasSize;
-    -> let elementsSize;
-  - Añadimos función que calcula el tamaño del canvas al evento 'resize'
+  - Seleccionamos un elementos del array maps
+    (recuerda maps es un array de strings y que cada elemento representa un mapa y que usa backticks `` para captar saltos de lineas)
+  - Eliminamos los espacios en blanco del string y en un array dividimos por cada salto de linea
+  - Con un .map eliminamos los espacios en blanco de cada elemento y en un array dividimos por cada caracter
+  - Dibujamos el mapa en canvas
 
 Metodos usados:
-  .addEventListener('resize', función);
+  .trim()       Metodo para strings que elimina espacios en blanco
+  .split('')    Divide un string por lo indicado en el parametro (retorna un array)

@@ -1,2 +1,5 @@
 game.js
-  - Refactorizando el for anidado para la impresión de los emojis
+  - Selecionamos por su id a las etiquetas button del html
+  - Añadimos eventos de teclado
+  - Añadimos eventos de click a los botones
+  - Indicamos que función ejecuta cada tecla direccional

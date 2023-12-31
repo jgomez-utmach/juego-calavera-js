@@ -1,10 +1,15 @@
 game.js
-  - Creamos condicional para que el tamaño del canvas siempre sea cuadrado y proporcional al tamano de la pantalla
-  - Creamos logica matemática para que el tamaño de los emojis permanezca proporcional al tamaño del canvas
-  - Proceso for para repetir el emoji 10 veces en el canvas y distribuirlos en relación a su tamaño
+  ** Cuando el tamaño de pantalla cambia debemos recargar la página para volver a calcular el tamaño del canvas
+  ** Para solucionar este problema usaremos un addEventListener para volverlo responsivo
+
+  - Declaramos un addEventListener para escuchar el evento 'resize'
+  - Separamos la lógica de la función draw en:
+    -> función para calcular el tamaño del canvas
+    -> función para dibujar en el canvas
+  - Declaramos como variables globales a:
+    -> let canvasSize;
+    -> let elementsSize;
+  - Añadimos función que calcula el tamaño del canvas al evento 'resize'
 
 Metodos usados:
-  window.innerHeight
-  window.innerWidth
-  .setAttribute('width', 100);
-  .setAttribute('height', 100);
+  .addEventListener('resize', función);

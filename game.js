@@ -28,19 +28,26 @@ function draw() {
   game.font = elementsSize + 'px Verdana';
   game.textAlign = 'end';
 
-  //Seleccionamos un mapa
   const map = maps[0];
-  //Eliminamos los espacios en blanco (trim) y dividimos por cada salto de línea (split)
   const mapRows = map.trim().split('\n');
-  //Recorremos cada elemento de mapRows, eliminamos los espacios en blanco (trim) y luego dividimos por cada caracter (split)
   const mapRowCols = mapRows.map(row => row.trim().split(''));
   console.log({map, mapRows, mapRowCols});
 
-  //Recorremos cada elemento de mapRowCols y lo dibujamos en el canvas
+  //Refactorizando el for anidado para la impresión de los emojis
+  mapRowCols.forEach((row, rowIndex) => {
+    row.forEach((col, colIndex) => {
+      const emoji = emojis[col];
+      const posX = elementsSize * (colIndex + 1);
+      const posY = elementsSize * (rowIndex + 1);
+      game.fillText(emoji, posX, posY);
+    });
+  });
+
+  /*
   for (let row = 1; row <= 10; row++) {
     for (let col = 1; col <= 10; col++) {
-      //emojis es un objeto de tipo clave-valor, por lo que podemos acceder a su valor mediante la clave
       game.fillText(emojis[mapRowCols[row - 1][col - 1]], elementsSize * col, elementsSize * row);
     }
   }
+  */
 }

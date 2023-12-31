@@ -1,10 +1,2 @@
 game.js
-  - Seleccionamos un elementos del array maps
-    (recuerda maps es un array de strings y que cada elemento representa un mapa y que usa backticks `` para captar saltos de lineas)
-  - Eliminamos los espacios en blanco del string y en un array dividimos por cada salto de linea
-  - Con un .map eliminamos los espacios en blanco de cada elemento y en un array dividimos por cada caracter
-  - Dibujamos el mapa en canvas
-
-Metodos usados:
-  .trim()       Metodo para strings que elimina espacios en blanco
-  .split('')    Divide un string por lo indicado en el parametro (retorna un array)
+  - Refactorizando el for anidado para la impresión de los emojis
